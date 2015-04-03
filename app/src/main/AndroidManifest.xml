@@ -78,11 +78,30 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.tifinnearme.priteshpatel.tifinnearme.Tifinvala_reg" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Web_Service"
+            android:label="Sign Up" >
+            <intent-filter>
+                <action android:name="com.tifinnearme.priteshpatel.tifinnearme.Web_Service" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Country_Finder"
+            android:label="Sign Up" >
+            <intent-filter>
+                <action android:name="com.tifinnearme.priteshpatel.tifinnearme.Country_Finder" />
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
