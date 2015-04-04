@@ -26,10 +26,16 @@ public class Country_Finder extends Activity {
     }
     public void onFindClick(View view){
 
-
-        new Web_Service(et.getText().toString());
         Intent i=new Intent(this,Web_Service.class);
+        i.putExtra("textfield_data",et.getText().toString());
+        //b.putString("text",et.getText().toString());
         startActivity(i);
+
+
+
+
+
+
 
     }
 }

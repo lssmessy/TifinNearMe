@@ -3,7 +3,9 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"></ScrollView>
+    android:layout_height="fill_parent">
+
+</ScrollView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,5 +15,41 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:textSize="30dp"/>
+        android:textSize="20dp"
+        android:textColor="#0000FF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Message"
+        android:id="@+id/msgView"
+        android:textSize="20dp"
+        android:layout_below="@+id/loadData"
+        android:layout_alignRight="@+id/loadData"
+        android:layout_alignEnd="@+id/loadData"
+        android:textColor="#FF4400"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Message: "
+        android:id="@+id/messageText"
+        android:layout_alignBottom="@+id/msgView"
+        android:layout_toLeftOf="@+id/loadData"
+        android:layout_toStartOf="@+id/loadData"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Country:"
+        android:id="@+id/countryTeext"
+        android:layout_above="@+id/messageText"
+        android:layout_alignLeft="@+id/messageText"
+        android:layout_alignStart="@+id/messageText" />
+
 </RelativeLayout>
