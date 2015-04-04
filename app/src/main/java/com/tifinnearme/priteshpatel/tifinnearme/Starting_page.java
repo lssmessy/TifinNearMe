@@ -82,22 +82,21 @@ public class Starting_page extends ActionBarActivity{
         });
 
         webcall=new Button(this);
-<<<<<<< HEAD
+
         webcall.setText("Find Country");
         webcall.setBackgroundColor(Color.parseColor("#A5ABAB"));
-=======
+
         webcall.setText("Webcall");
->>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
+
         webcall.setId(5);
         webcall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
+
 
                 Intent i=new Intent(Starting_page.this,Country_Finder.class);
-=======
-                Intent i=new Intent(Starting_page.this,Webcall.class);
->>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
+
+
                 startActivity(i);
             }
         });
@@ -109,10 +108,6 @@ public class Starting_page extends ActionBarActivity{
         webcall_params.addRule(RelativeLayout.BELOW, password.getId());
         webcall_params.setMargins(50,30,0,0);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
         RelativeLayout.LayoutParams signup_params=new RelativeLayout.LayoutParams
                 (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
         //signup_params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -150,10 +145,6 @@ public class Starting_page extends ActionBarActivity{
         rl.addView(login,login_params);
         rl.addView(signup,signup_params);
         rl.addView(webcall,webcall_params);
-<<<<<<< HEAD
-
-=======
->>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
         scroll_view.addView(rl);
         setContentView(scroll_view);
 

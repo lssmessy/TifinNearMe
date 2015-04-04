@@ -222,16 +222,8 @@ public class Tifinvala_reg extends ActionBarActivity{
         protected Void doInBackground(Void... params) {
 
             Intent i=new Intent(Tifinvala_reg.this,MainActivity.class);
+            startActivity(i);
 
-            try {
-                Thread.sleep(2000);
-                dialog.dismiss();
-                startActivity(i);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Log.i(p,"doInBackground after 2 secs");
             return null;
         }
 
@@ -239,14 +231,14 @@ public class Tifinvala_reg extends ActionBarActivity{
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Log.i(p,"onPostExecute");
             dialog.dismiss();
+            Log.i(p,"onPostExecute");
+
         }
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+
             Log.i(p,"onProgressUpdate");
             dialog.dismiss();
         }

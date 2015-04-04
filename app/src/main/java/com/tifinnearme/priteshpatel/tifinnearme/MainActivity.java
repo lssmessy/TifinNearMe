@@ -2,6 +2,7 @@ package com.tifinnearme.priteshpatel.tifinnearme;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -193,9 +195,11 @@ public class MainActivity extends Activity implements LocationListener {
 
         if (!isempty() && isInternetAvailable()) {
 
+
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
-            geocoder = new Geocoder(this, Locale.getDefault());
+            mapView();
+            /*geocoder = new Geocoder(this, Locale.getDefault());
 
             List<Address> addresss = null;
             try {
@@ -207,6 +211,7 @@ public class MainActivity extends Activity implements LocationListener {
                     lattitude = addresss.get(0).getLatitude();
                     longitude = addresss.get(0).getLongitude();
                     Toast.makeText(this, String.valueOf(lattitude) + "=>" + String.valueOf(longitude), Toast.LENGTH_SHORT).show();
+
 
                     List<Address> ad = geocoder.getFromLocation(lattitude, longitude, 1);
 
@@ -226,6 +231,7 @@ public class MainActivity extends Activity implements LocationListener {
                                 map.addMarker(new MarkerOptions().position(newLoc).title(City + "," + State + "," + Country));
                         et.setText(City + "," + State + "," + Country);
 
+
                     } else {
                         Toast.makeText(this, String.valueOf(lattitude) + "=>" + String.valueOf(longitude), Toast.LENGTH_SHORT).show();
                     }
@@ -238,7 +244,7 @@ public class MainActivity extends Activity implements LocationListener {
                 e.printStackTrace();
             }
 
-
+*/
         } else {
             if (!isInternetAvailable()) {
                 Log.i("Internet", "Disabled");
@@ -272,6 +278,55 @@ public class MainActivity extends Activity implements LocationListener {
 
     }
 
+    private void mapView() {
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        List<Address> addresss = null;
+        try {
+            addresss = geocoder.getFromLocationName(et.getText().toString(), 1);
+            Log.i("address", addresss.toString());
+            Address add = addresss.get(0);
+
+            if (addresss.size() > 0) {
+                lattitude = addresss.get(0).getLatitude();
+                longitude = addresss.get(0).getLongitude();
+                Toast.makeText(this, String.valueOf(lattitude) + "=>" + String.valueOf(longitude), Toast.LENGTH_SHORT).show();
+
+
+                List<Address> ad = geocoder.getFromLocation(lattitude, longitude, 1);
+
+                City = ad.get(0).getAddressLine(0);
+                State = ad.get(0).getAddressLine(1);
+                Country = ad.get(0).getAddressLine(2);
+                checkNull();
+                Log.i("latlng", String.valueOf(lattitude) + "=>" + String.valueOf(longitude));
+
+                LatLng newLoc = new LatLng(lattitude, longitude);
+                CameraUpdate showLoc = CameraUpdateFactory.newLatLngZoom(newLoc, 15);
+                if (showLoc != null) {
+                    map.clear();
+                    map.animateCamera(showLoc);
+                    map.addCircle(new CircleOptions().center(newLoc).visible(true).radius(500).strokeColor(Color.GRAY).strokeWidth(3));
+
+                    map.addMarker(new MarkerOptions().position(newLoc).title(City + "," + State + "," + Country));
+                    et.setText(City + "," + State + "," + Country);
+
+
+                } else {
+                    Toast.makeText(this, String.valueOf(lattitude) + "=>" + String.valueOf(longitude), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+
+            e.printStackTrace();
+        }
+
+
+    }
+
     private void checkNull() {
         if (City == null)
             this.City = "";
@@ -287,6 +342,38 @@ public class MainActivity extends Activity implements LocationListener {
         }
 
     }
+
+    /*public void mapView(double lattitude,double longitude){
+        try{
+            List<Address> ad = geocoder.getFromLocation(lattitude, longitude, 1);
+
+            City = ad.get(0).getAddressLine(0);
+            State = ad.get(0).getAddressLine(1);
+            Country = ad.get(0).getAddressLine(2);
+            checkNull();
+            Log.i("latlng", String.valueOf(lattitude) + "=>" + String.valueOf(longitude));
+
+            LatLng newLoc = new LatLng(lattitude, longitude);
+            CameraUpdate showL = CameraUpdateFactory.newLatLngZoom(newLoc, 15);
+        if (showL != null) {
+            map.clear();
+            map.animateCamera(showL);
+            map.addCircle(new CircleOptions().center(newLoc).visible(true).radius(500).strokeColor(Color.GRAY).strokeWidth(3));
+
+            map.addMarker(new MarkerOptions().position(newLoc).title(City + "," + State + "," + Country));
+            et.setText(City + "," + State + "," + Country);
+
+        } else {
+            Toast.makeText(this, String.valueOf(lattitude) + "=>" + String.valueOf(longitude), Toast.LENGTH_SHORT).show();
+        }
+
+} catch (IOException e) {
+        e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+
+        e.printStackTrace();
+        }
+    }*/
 
     private boolean isempty() {
         if (et.getText().length() > 0)
@@ -343,8 +430,14 @@ public class MainActivity extends Activity implements LocationListener {
     }
 }
 
- /*   public class LoadinBackground extends AsyncTask{
+/*    public class LoadinBackground extends AsyncTask<Void,Void,Void> {
         ProgressDialog dialog=new ProgressDialog(MainActivity.this);
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
+
         @Override
         protected void onPreExecute() {
 
@@ -456,5 +549,5 @@ public class MainActivity extends Activity implements LocationListener {
         protected void onProgressUpdate(Object[] values) {
             super.onProgressUpdate(values);
         }
-    }
-}*/
+    }*/
+

@@ -221,7 +221,7 @@ public class Customer_reg extends ActionBarActivity {
 
             try {
                 Thread.sleep(2000);
-                dialog.dismiss();
+
                  startActivity(i);
 
             } catch (InterruptedException e) {
@@ -235,14 +235,14 @@ public class Customer_reg extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+
             Log.i(p,"onPostExecute");
             dialog.dismiss();
         }
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+
             Log.i(p,"onProgressUpdate");
             dialog.dismiss();
         }
