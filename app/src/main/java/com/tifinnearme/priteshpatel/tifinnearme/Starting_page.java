@@ -2,14 +2,17 @@ package com.tifinnearme.priteshpatel.tifinnearme;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -58,9 +61,9 @@ public class Starting_page extends ActionBarActivity{
                 if(validations()) {
                     InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(login.getWindowToken(),0);
-
-                    Intent i = new Intent(Starting_page.this, MainActivity.class);
-                    startActivity(i);
+                    new Login_background().execute();
+                    /*Intent i = new Intent(Starting_page.this, MainActivity.class);
+                    startActivity(i);*/
                 }
              }
         });
@@ -79,14 +82,22 @@ public class Starting_page extends ActionBarActivity{
         });
 
         webcall=new Button(this);
+<<<<<<< HEAD
         webcall.setText("Find Country");
         webcall.setBackgroundColor(Color.parseColor("#A5ABAB"));
+=======
+        webcall.setText("Webcall");
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
         webcall.setId(5);
         webcall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
 
                 Intent i=new Intent(Starting_page.this,Country_Finder.class);
+=======
+                Intent i=new Intent(Starting_page.this,Webcall.class);
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
                 startActivity(i);
             }
         });
@@ -98,6 +109,10 @@ public class Starting_page extends ActionBarActivity{
         webcall_params.addRule(RelativeLayout.BELOW, password.getId());
         webcall_params.setMargins(50,30,0,0);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
         RelativeLayout.LayoutParams signup_params=new RelativeLayout.LayoutParams
                 (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
         //signup_params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -135,7 +150,10 @@ public class Starting_page extends ActionBarActivity{
         rl.addView(login,login_params);
         rl.addView(signup,signup_params);
         rl.addView(webcall,webcall_params);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
         scroll_view.addView(rl);
         setContentView(scroll_view);
 
@@ -200,4 +218,55 @@ public class Starting_page extends ActionBarActivity{
     }
 
 
+    private class Login_background extends AsyncTask<Void,Void,Void>{
+        ProgressDialog dialog;
+        static final String p="MyLog";
+        @Override
+        protected void onPreExecute() {
+
+            super.onPreExecute();
+            dialog=new ProgressDialog(Starting_page.this);
+            dialog.setMessage("Checking credentials...");
+            dialog.setTitle("Logging");
+            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            dialog.show();
+            
+
+            Log.i(p, "onPreExecute");
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            Intent i = new Intent(Starting_page.this, MainActivity.class);
+
+            try {
+                Thread.sleep(2000);
+                dialog.dismiss();
+                startActivity(i);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Log.i(p,"doInBackground after 2 secs");
+            return null;
+        }
+
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Log.i(p,"onPostExecute");
+            dialog.dismiss();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+            Log.i(p,"onProgressUpdate");
+            dialog.dismiss();
+        }
+    }
 }

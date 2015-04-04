@@ -71,7 +71,7 @@
         </activity>
         <activity
             android:name=".SignUp_page"
-            android:label="Customer Registration" >
+            android:label="Sign Up" >
             <intent-filter>
                 <action android:name="com.tifinnearme.priteshpatel.tifinnearme.SignUp_page" />
 
@@ -89,14 +89,22 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".Web_Service"
             android:label="Sign Up" >
             <intent-filter>
                 <action android:name="com.tifinnearme.priteshpatel.tifinnearme.Web_Service" />
+=======
+            android:name=".Webcall"
+            android:label="Sign Up" >
+            <intent-filter>
+                <action android:name="com.tifinnearme.priteshpatel.tifinnearme.Webcall" />
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".Country_Finder"
             android:label="Sign Up" >
@@ -106,6 +114,9 @@
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
+=======
+
+>>>>>>> 82da2cdde0af84e87879b9d89c4ca4925963bd8a
     </application>
 
 </manifest>
