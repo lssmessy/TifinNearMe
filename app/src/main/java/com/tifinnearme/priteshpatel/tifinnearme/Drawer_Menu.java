@@ -1,6 +1,7 @@
 package com.tifinnearme.priteshpatel.tifinnearme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -32,6 +33,7 @@ public class Drawer_Menu extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer_ex);
+
         dl=(DrawerLayout)findViewById(R.id.drawerOnleft);
         listView=(ListView) findViewById(R.id.list);
         //items=getResources().getStringArray(R.array.list_items);
@@ -63,6 +65,9 @@ public class Drawer_Menu extends ActionBarActivity {
                 dl.closeDrawers();
             }
         });
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     @Override

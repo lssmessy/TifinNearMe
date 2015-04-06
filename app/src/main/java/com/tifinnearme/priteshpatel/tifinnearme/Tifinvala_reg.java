@@ -221,7 +221,7 @@ public class Tifinvala_reg extends ActionBarActivity{
         @Override
         protected Void doInBackground(Void... params) {
 
-            Intent i=new Intent(Tifinvala_reg.this,MainActivity.class);
+            Intent i=new Intent(Tifinvala_reg.this,Drawer_Menu.class);
             startActivity(i);
 
             return null;

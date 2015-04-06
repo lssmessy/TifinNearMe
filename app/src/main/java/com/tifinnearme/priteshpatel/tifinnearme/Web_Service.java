@@ -106,6 +106,8 @@ public class Web_Service extends Activity {
            progressDialog.setTitle("Looking");
            progressDialog.setMessage("Getting data...");
            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+           progressDialog.setCancelable(false);
+           progressDialog.setCanceledOnTouchOutside(false);
            progressDialog.show();
        }
 
