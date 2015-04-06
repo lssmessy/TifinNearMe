@@ -9,4 +9,15 @@
         <item>Settings</item>
         <item>About</item>
     </string-array>
+    <string name="open">Open Drawer</string>
+    <string name="close">Close Drawer</string>
+    <string-array name="tifin_items">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Requests</item>
+        <item>Notifications</item>
+        <item>Search</item>
+        <item>Track My Tifin</item>
+        <item>Settings</item>
+    </string-array>
 </resources>
